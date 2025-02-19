@@ -8,7 +8,7 @@ import HomePage from "pages/webSite/home/homePage";
 import BooksPage from "pages/webSite/books/booksPage";
 import Book from "pages/webSite/books/book/book";
 import TeacherInfo from "pages/webSite/teacherInfo";
-import {AdminBaseUrl, BackUrl, headers} from "constants/global";
+import {BackUrl, headers} from "constants/global";
 import {
     fetchedAdvantages,
     fetchedCertificates, fetchedHrefs,
@@ -31,7 +31,7 @@ const WebSite = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        request(`${AdminBaseUrl}get_home_info`, "GET", null, headers())
+        request(`${BackUrl}get_home_info`, "GET", null, headers())
             .then(res => {
                 if (res?.success) {
                     dispatch(fetchedAdvantages(res?.advantages))
@@ -55,7 +55,7 @@ const WebSite = () => {
                     dispatch(fetchedLocations([]))
                 }
             })
-            .catch(err => console.log(err))
+            // .catch(err => console.log(err))
     }, [])
 
 
@@ -103,7 +103,7 @@ const WebSite = () => {
                                 </Routes>
                             </Context.Provider>
                         </>
-                        // </AnimateSharedLayout>
+                         // </AnimateSharedLayout>
                     )
 
 

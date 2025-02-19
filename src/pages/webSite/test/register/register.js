@@ -14,7 +14,7 @@ import {fetchData, fetchDataMk, fetchDefenations, fetchGetHomeInfo} from "./mode
 
 import {useHttp} from "../../../../hooks/http.hook";
 
-import {AdminBaseUrl, BackUrl, headers} from "../../../../constants/global";
+import {BackUrl, headers} from "../../../../constants/global";
 import {InputTest} from "../../../../components/platform/platformUI/inputTest/inputTest";
 import {Select} from "../select";
 import {setMessage} from "../../../../slices/messageSlice";
@@ -63,7 +63,7 @@ export const Register = () => {
     useEffect(() => {
 
       if (univer){
-          request(`${AdminBaseUrl}faculties/${univer}`, "GET", null, headers())
+          request(`${BackUrl}faculties/${univer}`, "GET", null, headers())
               .then(res => {
                   setFakultet(res)
               })
@@ -85,16 +85,18 @@ export const Register = () => {
             defenation_id: Number(def )
 
         }
-        request(`${AdminBaseUrl}students_test`, "POST", JSON.stringify(res), headers())
+        request(`${BackUrl}students_test`, "POST", JSON.stringify(res), headers())
             .then(res => {
                 setValue("name", "")
                 setValue("surname", "")
                 setValue("phone", "")
                 setValue("father_name", "")
-                setStudentIdModal(true)
+                if(res.success) {
+                    setStudentIdModal(true)
+                }
                 setStudentId(res)
                 dispatch(setMessage({
-                    msg: `${res.message} , Student id ${res.unique_id}`,
+                    msg: `${res.success === false ? res.msg : `${res.message} , Student id ${res.unique_id}`}`,
                     type: "success",
                     active: true
                 }))
@@ -160,28 +162,24 @@ export const Register = () => {
                             options={lan}
                             extraClass={cls.select}
                             onChangeOption={setLang}
-                            required
                         />
                         <Select
                             title={"Location ni tanlang"}
                             onChangeOption={setLoc}
                             extraClass={cls.select}
                             options={homeInfo}
-                            required
                         />
                         <Select
                             title={"Yo'nalish ni tanlang"}
                             onChangeOption={setDef}
                             extraClass={cls.select}
                             options={defenations}
-                            required
                         />
                         <Select
                             title={"Maktabni Tanlang"}
                             onChangeOption={setSchool}
                             extraClass={cls.select}
                             options={dataMk}
-                            required
                         />
                         {/*<Select*/}
                         {/*    title={"Universitet ni tanlang"}*/}

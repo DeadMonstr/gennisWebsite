@@ -48,7 +48,7 @@ const StudentsDiscount = ({locationId, path}) => {
             }
             dispatch(fetchAccData(data))
             const newData = {
-                name: "discounts",
+                name: "debt_students",
                 location: locationId,
                 type: ""
             }
@@ -57,10 +57,9 @@ const StudentsDiscount = ({locationId, path}) => {
         }
     }, [locationId])
 
-
-    // useEffect(() => {
-    //     dispatch(onChangeAccountingPage({value: path}))
-    // },[])
+    useEffect(() => {
+        dispatch(onChangeAccountingPage({value: path}))
+    },[])
 
 
     useEffect(() => {
