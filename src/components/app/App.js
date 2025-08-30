@@ -17,6 +17,7 @@ import RequireAuth from "components/requireAuth/requireAuth";
 import QrCodeRegister from "pages/platformContent/qrCode/qrCodeRegister/qrCodeRegister";
 import {ROLES} from "constants/global";
 import {Register} from "../../pages/webSite/test/register/register";
+import {JustItem} from "pages/platformContent/justItem/justItem";
 
 const App = () => {
 
@@ -69,6 +70,11 @@ const App = () => {
             <Route
                 path="/discountUserChirchik"
                 element={<QrCodeRegister/>}
+            />
+
+            <Route
+                path="just"
+                element={<JustItem/>}
             />
 
 

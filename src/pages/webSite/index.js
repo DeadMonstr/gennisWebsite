@@ -100,6 +100,7 @@ const WebSite = () => {
                                     <Route path={"books"} element={<BooksPage/>}/>
                                     <Route path={"books/:id"} element={<Book/>}/>
                                     <Route path={"teacherInfo/:id"} element={<TeacherInfo/>}/>
+
                                 </Routes>
                             </Context.Provider>
                         </>

@@ -25,7 +25,7 @@ const lan = [
     {name: "UZ"},
     {name: "RU"}
 ]
-export const Register = () => {
+export const  Register = () => {
 
     const [activeSwitch, setActiveSwitch] = useState(null)
 
